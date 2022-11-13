@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Project2.Data;
+using FilmReservation.Data;
 
-namespace Project2.Migrations
+namespace FilmReservation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210601165948_AddCommentValidation")]

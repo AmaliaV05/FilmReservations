@@ -1,4 +1,4 @@
-﻿namespace Project2.Helpers
+﻿namespace FilmReservation.Helpers
 {
     public class PaginationHeader
     {

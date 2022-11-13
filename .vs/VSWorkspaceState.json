@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\async-await",
-    "\\Project2"
+    "\\Project2",
+    "\\Project2\\Project2"
   ],
-  "SelectedNode": "\\async-await\\Program.cs",
+  "SelectedNode": "\\Project2\\Project2.sln",
   "PreviewInSolutionExplorer": false
 }

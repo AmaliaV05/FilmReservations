@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project2.ViewModels.Reservations
+namespace FilmReservation.ViewModels.Reservations
 {
     public class ReservationForUserResponse
     {

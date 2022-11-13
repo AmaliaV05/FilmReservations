@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Project2.Migrations
+namespace FilmReservation.Migrations
 {
     public partial class AddReservation : Migration
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project2.Models
+namespace FilmReservation.Models
 {
     public enum Genre {
         Action,

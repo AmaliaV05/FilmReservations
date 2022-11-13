@@ -1,4 +1,4 @@
-﻿namespace Project2.ViewModels
+﻿namespace FilmReservation.ViewModels
 {
     public class CommentViewModel
     {

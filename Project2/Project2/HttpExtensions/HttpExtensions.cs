@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
-using Project2.Helpers;
+using FilmReservation.Helpers;
 using Microsoft.AspNetCore.Http;
 
-namespace Project2.HttpExtensions
+namespace FilmReservation.HttpExtensions
 {
     public static class HttpExtensions
     {

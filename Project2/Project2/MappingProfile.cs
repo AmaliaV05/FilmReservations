@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Project2.Models;
-using Project2.ViewModels;
-using Project2.ViewModels.Reservations;
+using FilmReservation.Models;
+using FilmReservation.ViewModels;
+using FilmReservation.ViewModels.Reservations;
 
-namespace Project2
+namespace FilmReservation
 {
     public class MappingProfile : Profile
     {

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
     [ApiController]

@@ -13,6 +13,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <UserSecretsId>07d951c7-483e-4b90-b750-5c117166995b</UserSecretsId>
+    <RootNamespace>FilmReservation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

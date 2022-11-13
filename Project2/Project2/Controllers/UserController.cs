@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Project2.Data;
-using Project2.Models;
-using Project2.ViewModels;
+using FilmReservation.Data;
+using FilmReservation.Models;
+using FilmReservation.ViewModels;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

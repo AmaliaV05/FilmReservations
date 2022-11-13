@@ -1,11 +1,11 @@
-﻿using Project2.Helpers;
-using Project2.Models;
-using Project2.ViewModels;
+﻿using FilmReservation.Helpers;
+using FilmReservation.Models;
+using FilmReservation.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Project2.Services
+namespace FilmReservation.Services
 {
     public interface IFilmService
     {

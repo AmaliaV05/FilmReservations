@@ -1,4 +1,4 @@
-﻿namespace Project2.Services
+﻿namespace FilmReservation.Services
 {
     public class ServiceResponse<TResponseOk, TResponseError>
     {

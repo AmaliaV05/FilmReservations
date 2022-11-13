@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using Project2.Data;
-using Project2.ViewModels.Authentication;
+using FilmReservation.Data;
+using FilmReservation.ViewModels.Authentication;
 
-namespace Project2.Validators
+namespace FilmReservation.Validators
 {
     public class LoginRequestValidator : AbstractValidator<LoginRequest>
     {

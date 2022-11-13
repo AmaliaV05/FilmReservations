@@ -11,18 +11,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Project2.Data;
-using Project2.Models;
-using Project2.Services;
-using Project2.Validators;
-using Project2.ViewModels;
-using Project2.ViewModels.Authentication;
+using FilmReservation.Data;
+using FilmReservation.Models;
+using FilmReservation.Services;
+using FilmReservation.Validators;
+using FilmReservation.ViewModels;
+using FilmReservation.ViewModels.Authentication;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Project2
+namespace FilmReservation
 {
     public class Startup
     {

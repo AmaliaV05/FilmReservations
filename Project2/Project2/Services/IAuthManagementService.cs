@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Project2.ViewModels.Authentication;
+using FilmReservation.ViewModels.Authentication;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Project2.Services
+namespace FilmReservation.Services
 {
     public interface IAuthManagementService
     {

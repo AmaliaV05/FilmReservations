@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project2.Data;
-using Project2.Helpers;
-using Project2.Models;
-using Project2.ViewModels;
+using FilmReservation.Data;
+using FilmReservation.Helpers;
+using FilmReservation.Models;
+using FilmReservation.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project2.Services
+namespace FilmReservation.Services
 {
     public class FilmService : IFilmService
     {

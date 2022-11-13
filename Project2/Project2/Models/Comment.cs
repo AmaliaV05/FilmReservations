@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Project2.Models
+namespace FilmReservation.Models
 {
     public class Comment
     {

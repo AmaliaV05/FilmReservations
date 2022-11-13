@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Project2.Data;
-using Project2.Models;
-using Project2.ViewModels.Reservations;
+using FilmReservation.Data;
+using FilmReservation.Models;
+using FilmReservation.ViewModels.Reservations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
     [ApiController]

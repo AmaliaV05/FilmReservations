@@ -6,15 +6,15 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Project2.Data;
-using Project2.Models;
-using Project2.ViewModels;
+using FilmReservation.Data;
+using FilmReservation.Models;
+using FilmReservation.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Project2.Services;
-using Project2.Helpers;
-using Project2.HttpExtensions;
+using FilmReservation.Services;
+using FilmReservation.Helpers;
+using FilmReservation.HttpExtensions;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
     [Route("api/[controller]")]

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Project2.Services;
-using Project2.ViewModels.Authentication;
+using FilmReservation.Services;
+using FilmReservation.ViewModels.Authentication;
 
 using System.Threading.Tasks;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace Project2.Models
+namespace FilmReservation.Models
 {
     public class ApplicationUser : IdentityUser
     {

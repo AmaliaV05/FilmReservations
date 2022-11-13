@@ -1,7 +1,7 @@
-﻿using Project2.Models;
+﻿using FilmReservation.Models;
 using System;
 
-namespace Project2.ViewModels
+namespace FilmReservation.ViewModels
 {
     public class FilmViewModel
     {

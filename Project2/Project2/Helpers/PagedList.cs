@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project2.Helpers
+namespace FilmReservation.Helpers
 {
     public class PagedList<T> : List<T>
     {

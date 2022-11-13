@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using Microsoft.EntityFrameworkCore;
 using System;
-using Project2.Models;
-using Project2.Data;
-using Project2.Services;
+using FilmReservation.Models;
+using FilmReservation.Data;
+using FilmReservation.Services;
 
 namespace Tests
 {

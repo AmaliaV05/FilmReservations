@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Project2.ViewModels
+namespace FilmReservation.ViewModels
 {
     public class FilmWithCommentViewModel
     {

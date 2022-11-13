@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
-[assembly: HostingStartup(typeof(Project2.Areas.Identity.IdentityHostingStartup))]
-namespace Project2.Areas.Identity
+[assembly: HostingStartup(typeof(FilmReservation.Areas.Identity.IdentityHostingStartup))]
+namespace FilmReservation.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

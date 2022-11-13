@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Project2.Controllers
+namespace FilmReservation.Controllers
 {
     public class OidcConfigurationController : Controller
     {

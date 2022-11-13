@@ -1,6 +1,6 @@
 using System;
 
-namespace Project2
+namespace FilmReservation
 {
     public class WeatherForecast
     {

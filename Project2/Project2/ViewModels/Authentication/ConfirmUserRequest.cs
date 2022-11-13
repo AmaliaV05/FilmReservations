@@ -1,4 +1,4 @@
-﻿namespace Project2.ViewModels.Authentication
+﻿namespace FilmReservation.ViewModels.Authentication
 {
     public class ConfirmUserRequest
     {

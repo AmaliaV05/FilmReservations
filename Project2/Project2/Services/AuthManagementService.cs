@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Project2.Data;
-using Project2.Models;
-using Project2.ViewModels.Authentication;
+using FilmReservation.Data;
+using FilmReservation.Models;
+using FilmReservation.ViewModels.Authentication;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,7 +13,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project2.Services
+namespace FilmReservation.Services
 {
     public class AuthManagementService : IAuthManagementService
     {

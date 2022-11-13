@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Project2.Models;
+using FilmReservation.Models;
 
-namespace Project2.Areas.Identity.Pages.Account
+namespace FilmReservation.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel

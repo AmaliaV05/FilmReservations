@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Project2.Data;
-using Project2.ViewModels;
+using FilmReservation.Data;
+using FilmReservation.ViewModels;
 using System.Linq;
 
-namespace Project2.Validators
+namespace FilmReservation.Validators
 {
     public class FilmValidator : AbstractValidator<FilmViewModel>
     {
