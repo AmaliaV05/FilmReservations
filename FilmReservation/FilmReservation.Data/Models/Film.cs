@@ -1,15 +1,9 @@
-﻿using System;
+﻿using FilmReservation.Data.Models.EnumUtils;
+using System;
 using System.Collections.Generic;
 
 namespace FilmReservation.Data.Models
-{
-    public enum Genre {
-        Action,
-        Comedy,
-        Horror,
-        Thriller
-    }
-
+{  
     public class Film
     {
         public int Id { get; set; }
@@ -22,13 +16,7 @@ namespace FilmReservation.Data.Models
         public DateTime DateAdded { get; set; }
         public int Rating { get; set; }
         public string Watched { get; set; }
-
         public List<Comment> Comments { get; set; }
         public List<Reservation> Reservations { get; set; }
-
-        public Film()
-        {
-
-        }
     }
 }
