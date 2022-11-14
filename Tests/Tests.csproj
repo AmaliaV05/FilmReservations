@@ -14,6 +14,7 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>    
   <ItemGroup>
+    <ProjectReference Include="..\FilmReservation\FilmReservation\FilmReservation.csproj" />
     <ProjectReference Include="..\Project2\Project2\FilmReservation.csproj" />
   </ItemGroup>
 

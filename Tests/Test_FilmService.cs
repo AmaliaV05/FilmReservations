@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using Microsoft.EntityFrameworkCore;
 using System;
-using FilmReservation.Models;
 using FilmReservation.Data;
+using FilmReservation.Models;
 using FilmReservation.Services;
 
 namespace Tests
