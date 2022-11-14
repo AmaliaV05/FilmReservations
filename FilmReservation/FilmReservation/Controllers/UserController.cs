@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using FilmReservation.Data;
-using FilmReservation.Models;
-using FilmReservation.ViewModels;
+using FilmReservation.Data.Data;
+using FilmReservation.Data.Models;
+using FilmReservation.BusinessLogic.ViewModels;
 
 namespace FilmReservation.Controllers
 {
@@ -59,7 +59,7 @@ namespace FilmReservation.Controllers
                 mappedResult.Add(mappedUser);
             }
 
-            mappedResult = mappedResult.OrderBy(u => !u.UserRoles.Contains(UserRole.ROLE_ADMIN)).ToList();
+            //mappedResult = mappedResult.OrderBy(u => !u.UserRoles.Contains(UserRole.ROLE_ADMIN)).ToList();
 
             return mappedResult;
         }
@@ -104,10 +104,10 @@ namespace FilmReservation.Controllers
         {
             var currentUser = await _userManager.FindByNameAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (id != currentUser.Id && !await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
+            /*if (id != currentUser.Id && !await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
             {
                 return Unauthorized();
-            }
+            }*/
 
             if (!user.Id.Equals(id))
             {
@@ -145,10 +145,10 @@ namespace FilmReservation.Controllers
         {
             var currentUser = await _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value);
 
-            if (!await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
+            /*if (!await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
             {
                 return StatusCode(403);
-            }
+            }*/
 
             var user = new ApplicationUser
             {
@@ -177,10 +177,10 @@ namespace FilmReservation.Controllers
         {
             var currentUser = await _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value);
 
-            if (!await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
+            /*if (!await _userManager.IsInRoleAsync(currentUser, UserRole.ROLE_ADMIN))
             {
                 return StatusCode(403);
-            }
+            }*/
 
             var user = await _context.Users.FindAsync(id);
             if (user == null)

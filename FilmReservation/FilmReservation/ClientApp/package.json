@@ -1,11 +1,11 @@
 {
-  "name": "project2",
+  "name": "filmreservation",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "echo Starting... && ng serve",
     "build": "ng build",
-    "build:ssr": "ng run Project2:server:dev",
+    "build:ssr": "ng run FilmReservation:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

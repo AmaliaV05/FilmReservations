@@ -1,4 +1,4 @@
-export const ApplicationName = 'Project2';
+export const ApplicationName = 'FilmReservation';
 
 export const ReturnUrlType = 'returnUrl';
 

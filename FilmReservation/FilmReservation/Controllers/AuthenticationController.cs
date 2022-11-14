@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FilmReservation.Services;
-using FilmReservation.ViewModels.Authentication;
+using FilmReservation.BusinessLogic.Services;
+using FilmReservation.BusinessLogic.ViewModels.Authentication;
 
 using System.Threading.Tasks;
 

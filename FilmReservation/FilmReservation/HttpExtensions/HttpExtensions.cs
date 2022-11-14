@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using FilmReservation.Helpers;
+using FilmReservation.Data.Models.Pagination;
 using Microsoft.AspNetCore.Http;
 
 namespace FilmReservation.HttpExtensions

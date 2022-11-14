@@ -1,0 +1,36 @@
+﻿using FilmReservation.Data.Models;
+using FilmReservation.Data.Models.Pagination;
+using FilmReservation.BusinessLogic.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace FilmReservation.BusinessLogic.Services
+{
+    public interface IFilmService
+    {
+        Task<PagedList<Film>> GetAllFilms(FilmParams filmParams);
+        List<Film> GetAllFilmsBetweenDates(DateTime StartDate, DateTime EndDate);
+
+        Task<Film> GetFilmById(int id);
+
+        IEnumerable<FilmWithCommentViewModel> GetCommentsForFilm(int id);
+
+        IEnumerable<FilmViewModel> FilterFilms(DateTime firstDate, DateTime lastDate);
+
+        IEnumerable<FilmViewModel> FilterFilmsByGenre(Genre genre);
+
+        Task<bool> PutFilm(int id, FilmViewModel filmViewModel);
+
+        Task<bool> PutComment(int idFilm, int idComment, CommentViewModel commentViewModel);
+
+        Task<Film> PostFilm(FilmViewModel filmRequest);
+
+        Task<Comment> PostCommentForFilm(int id, Comment comment);
+
+        Task<bool> DeleteFilm(int id);
+    
+        Task<bool> DeleteComment(int idFilm, int idComment);    
+
+    }
+}

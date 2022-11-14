@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using FilmReservation.Data;
-using FilmReservation.ViewModels;
+using FilmReservation.Data.Data;
+using FilmReservation.BusinessLogic.ViewModels;
 using System.Linq;
 
 namespace FilmReservation.Validators

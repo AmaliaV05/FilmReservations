@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using FilmReservation.Models;
-using FilmReservation.ViewModels;
-using FilmReservation.ViewModels.Reservations;
+using FilmReservation.Data.Models;
+using FilmReservation.BusinessLogic.ViewModels;
+using FilmReservation.BusinessLogic.ViewModels.Reservations;
 
 namespace FilmReservation
 {

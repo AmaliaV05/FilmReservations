@@ -6,13 +6,13 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using FilmReservation.Data;
-using FilmReservation.Models;
-using FilmReservation.ViewModels;
+using FilmReservation.Data.Data;
+using FilmReservation.Data.Models;
+using FilmReservation.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using FilmReservation.Services;
-using FilmReservation.Helpers;
+using FilmReservation.BusinessLogic.Services;
 using FilmReservation.HttpExtensions;
+using FilmReservation.Data.Models.Pagination;
 
 namespace FilmReservation.Controllers
 {
