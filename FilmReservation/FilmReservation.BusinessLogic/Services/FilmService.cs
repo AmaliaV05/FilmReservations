@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FilmReservation.Data.Models.Pagination;
 using FilmReservation.Data.Models;
+using FilmReservation.Data.Models.EnumUtils;
 
 namespace FilmReservation.BusinessLogic.Services
 {
@@ -17,11 +18,6 @@ namespace FilmReservation.BusinessLogic.Services
         public FilmService(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        public List<Film> GetAllFilmsBetweenDates(DateTime StartDate, DateTime EndDate)
-        {
-            return _context.Films.Where(f => f.DateAdded >= StartDate && f.DateAdded <= EndDate).ToList();
         }
 
         public async Task<PagedList<Film>> GetAllFilms(FilmParams filmParams)
@@ -40,12 +36,7 @@ namespace FilmReservation.BusinessLogic.Services
         public Task<Film> GetFilmById(int id)
         {
             throw new NotImplementedException();
-        }
-
-        public IEnumerable<FilmWithCommentViewModel> GetCommentsForFilm(int id)
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public IEnumerable<FilmViewModel> FilterFilms(DateTime firstDate, DateTime lastDate)
         {
@@ -60,29 +51,14 @@ namespace FilmReservation.BusinessLogic.Services
         public Task<bool> PutFilm(int id, FilmViewModel filmViewModel)
         {
             throw new NotImplementedException();
-        }
-
-        public Task<bool> PutComment(int idFilm, int idComment, CommentViewModel commentViewModel)
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public Task<Film> PostFilm(FilmViewModel filmRequest)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Comment> PostCommentForFilm(int id, Comment comment)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<bool> DeleteFilm(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteComment(int idFilm, int idComment)
         {
             throw new NotImplementedException();
         }

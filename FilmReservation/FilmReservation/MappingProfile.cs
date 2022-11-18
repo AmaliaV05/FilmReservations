@@ -11,10 +11,6 @@ namespace FilmReservation
         {
             CreateMap<Film, FilmViewModel>().ReverseMap();
 
-            CreateMap<Comment, CommentViewModel>().ReverseMap();
-
-            CreateMap<Film, FilmWithCommentViewModel>().ReverseMap();
-
             CreateMap<Reservation, ReservationForUserResponse>().ReverseMap();
 
             CreateMap<ApplicationUser, ApplicationUserViewModel>().ReverseMap();

@@ -1,5 +1,4 @@
-﻿using FilmReservation.Data.Models;
-using System;
+﻿using FilmReservation.Data.Models.EnumUtils;
 
 namespace FilmReservation.BusinessLogic.ViewModels
 {
@@ -11,9 +10,9 @@ namespace FilmReservation.BusinessLogic.ViewModels
         public Genre Genre { get; set; }
         public string Duration { get; set; }
         public int YearOfRelease { get; set; }
+        public string Cast { get; set; }
         public string Director { get; set; }
-        public DateTime DateAdded { get; set; }
-        public int Rating { get; set; }
-        public string Watched { get; set; }
+        public Language Language { get; set; }
+        public AgeRestriction AgeRestriction { get; set; }
     }
 }

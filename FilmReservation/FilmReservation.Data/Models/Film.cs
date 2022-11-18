@@ -1,9 +1,7 @@
 ﻿using FilmReservation.Data.Models.EnumUtils;
-using System;
-using System.Collections.Generic;
 
 namespace FilmReservation.Data.Models
-{  
+{
     public class Film
     {
         public int Id { get; set; }
@@ -12,11 +10,11 @@ namespace FilmReservation.Data.Models
         public Genre Genre { get; set; }
         public string Duration { get; set; }
         public int YearOfRelease { get; set; }
+        public string Cast { get; set; }
         public string Director { get; set; }
-        public DateTime DateAdded { get; set; }
-        public int Rating { get; set; }
-        public string Watched { get; set; }
-        public List<Comment> Comments { get; set; }
-        public List<Reservation> Reservations { get; set; }
+        public Language Language { get; set; }
+        public AgeRestriction AgeRestriction { get; set; }
+        //public DateTime DateAdded { get; set; }
+        //public List<Reservation> Reservations { get; set; }
     }
 }
