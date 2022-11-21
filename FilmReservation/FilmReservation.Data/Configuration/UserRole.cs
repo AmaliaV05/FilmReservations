@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FilmReservation.Data.Models
+namespace FilmReservation.Data.Configuration
 {
     internal class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
     {
@@ -15,13 +15,6 @@ namespace FilmReservation.Data.Models
                     Name = "Admin",
                     NormalizedName = "ADMIN",
                     ConcurrencyStamp = "7551a98b-46f3-48d7-b9a3-4d27603f313b"
-                },
-                new IdentityRole
-                {
-                    Id = "6facc23c-e274-41b1-9ac1-8efb7b71689d",
-                    Name = "Employee",
-                    NormalizedName = "EMPLOYEE",
-                    ConcurrencyStamp = "c4b1fccd-35d0-455a-b28e-3f66293c68e6"
                 },
                 new IdentityRole
                 {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using FilmReservation.Data.Models;
+using FilmReservation.Data.Configuration;
 
 namespace FilmReservation.Data.Data
 {
