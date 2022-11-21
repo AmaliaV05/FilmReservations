@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using FilmReservation.Data.Models;
-using FilmReservation.BusinessLogic.ViewModels;
-using FilmReservation.BusinessLogic.ViewModels.Reservations;
 
 namespace FilmReservation
 {
@@ -9,11 +6,11 @@ namespace FilmReservation
     {
         public MappingProfile()
         {
-            CreateMap<Film, FilmViewModel>().ReverseMap();
+            //CreateMap<Film, FilmViewModel>().ReverseMap();
 
-            CreateMap<Reservation, ReservationForUserResponse>().ReverseMap();
+            //CreateMap<Reservation, ReservationForUserResponse>().ReverseMap();
 
-            CreateMap<ApplicationUser, ApplicationUserViewModel>().ReverseMap();
+            //CreateMap<ApplicationUser, ApplicationUserViewModel>().ReverseMap();
         }
     }
 }

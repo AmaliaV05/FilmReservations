@@ -1,4 +1,4 @@
-﻿using FilmReservation.Data.Models;
+﻿/*using FilmReservation.Data.Models;
 using FilmReservation.Data.Models.Pagination;
 using FilmReservation.BusinessLogic.ViewModels;
 using System;
@@ -19,3 +19,4 @@ namespace FilmReservation.BusinessLogic.Services
         Task<bool> DeleteFilm(int id);
     }
 }
+*/

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*using Microsoft.EntityFrameworkCore;
 using FilmReservation.Data.Data;
 using FilmReservation.BusinessLogic.ViewModels;
 using System;
@@ -64,3 +64,4 @@ namespace FilmReservation.BusinessLogic.Services
         }
     }
 }
+*/

@@ -13,7 +13,11 @@ namespace FilmReservation.Data.Data
         {
         }
         
-        public DbSet<Film> Films { get; set; }        
+        public DbSet<Film> Films { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<CinemaHall> CinemaHalls { get; set; }
+        public DbSet<Seat> Seats { get; set; }
+        public DbSet<Program> Programs { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
@@ -27,6 +31,13 @@ namespace FilmReservation.Data.Data
                 .HasFilter(null);
 
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            modelBuilder.Entity<Reservation>()
+                .HasMany(x => x.Seats)
+                .WithMany(x => x.Reservations)
+                .UsingEntity<ReservationSeat>(
+                    x => x.HasOne(x => x.Seat).WithMany(x => x.ReservationSeats),
+                    x => x.HasOne(x => x.Reservation).WithMany(x => x.ReservationSeats));
         }
     }
 }

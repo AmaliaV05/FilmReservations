@@ -1,4 +1,6 @@
 ﻿using FilmReservation.Data.Models.EnumUtils;
+using System;
+using System.Collections.Generic;
 
 namespace FilmReservation.Data.Models
 {
@@ -14,7 +16,7 @@ namespace FilmReservation.Data.Models
         public string Director { get; set; }
         public Language Language { get; set; }
         public AgeRestriction AgeRestriction { get; set; }
-        //public DateTime DateAdded { get; set; }
-        //public List<Reservation> Reservations { get; set; }
+        public DateTime DateAdded { get; set; }
+        public List<Program> Programs { get; set; }
     }
 }

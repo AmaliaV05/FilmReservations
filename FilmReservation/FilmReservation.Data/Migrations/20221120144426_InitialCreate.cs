@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FilmReservation.Migrations
+namespace FilmReservation.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -190,6 +190,21 @@ namespace FilmReservation.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "1b18956a-e040-4fd0-8a9e-5e6f0946a4fe", "7551a98b-46f3-48d7-b9a3-4d27603f313b", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "6facc23c-e274-41b1-9ac1-8efb7b71689d", "c4b1fccd-35d0-455a-b28e-3f66293c68e6", "Employee", "EMPLOYEE" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "ee2a151e-99b3-4305-a4ef-d25a9320908b", "fa893815-597a-4347-b5e8-b91a4ff91988", "Client", "CLIENT" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

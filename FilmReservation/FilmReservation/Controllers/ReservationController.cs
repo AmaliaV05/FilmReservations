@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -60,7 +60,7 @@ namespace FilmReservation.Controllers
             var reservation = new Reservation
             {
                 ApplicationUser = user,
-                Films = reservedFilms,
+                //Films = reservedFilms,
                 ReservationDateTime = newReservationRequest.ReservationDateTime.GetValueOrDefault()
             };
 
@@ -81,7 +81,7 @@ namespace FilmReservation.Controllers
 
             var result = _context.Reservations
                 .Where(r => r.ApplicationUser.Id == user.Id)
-                .Include(r => r.Films)
+                //.Include(r => r.Films)
                 .Select(r => _mapper.Map<ReservationForUserResponse>(r)).ToList();
             //var resultViewModel = _mapper.Map<ReservationForUserResponse>(result);
 
@@ -90,3 +90,4 @@ namespace FilmReservation.Controllers
        
     }
 }
+*/

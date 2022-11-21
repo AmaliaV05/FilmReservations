@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FilmReservation.Migrations
+namespace FilmReservation.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -84,28 +84,45 @@ namespace FilmReservation.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FilmReservation.Data.Models.Comment", b =>
+            modelBuilder.Entity("FilmReservation.Data.Models.Cinema", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FilmId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Important")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalHalls")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FilmId");
+                    b.ToTable("Cinemas");
+                });
 
-                    b.ToTable("Comments");
+            modelBuilder.Entity("FilmReservation.Data.Models.CinemaHall", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CinemaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalSeats")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CinemaId");
+
+                    b.ToTable("CinemaHalls");
                 });
 
             modelBuilder.Entity("FilmReservation.Data.Models.Film", b =>
@@ -120,6 +137,9 @@ namespace FilmReservation.Migrations
 
                     b.Property<string>("Cast")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -136,9 +156,6 @@ namespace FilmReservation.Migrations
                     b.Property<int>("Language")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(450)");
 
@@ -147,12 +164,35 @@ namespace FilmReservation.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReservationId");
-
                     b.HasIndex("Title")
                         .IsUnique();
 
                     b.ToTable("Films");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.Program", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CinemaHallId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("FilmId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CinemaHallId");
+
+                    b.HasIndex("FilmId");
+
+                    b.ToTable("Programs");
                 });
 
             modelBuilder.Entity("FilmReservation.Data.Models.Reservation", b =>
@@ -165,14 +205,57 @@ namespace FilmReservation.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("ReservationDateTime")
+                    b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProgramId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
+                    b.HasIndex("ProgramId");
+
                     b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.ReservationSeat", b =>
+                {
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SeatId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReservationId", "SeatId");
+
+                    b.HasIndex("SeatId");
+
+                    b.ToTable("ReservationSeat");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.Seat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CinemaHallId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Occupied")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SeatNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CinemaHallId");
+
+                    b.ToTable("Seats");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -436,29 +519,71 @@ namespace FilmReservation.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("FilmReservation.Data.Models.Comment", b =>
+            modelBuilder.Entity("FilmReservation.Data.Models.CinemaHall", b =>
                 {
-                    b.HasOne("FilmReservation.Data.Models.Film", "Film")
-                        .WithMany()
-                        .HasForeignKey("FilmId");
+                    b.HasOne("FilmReservation.Data.Models.Cinema", "Cinema")
+                        .WithMany("CinemaHalls")
+                        .HasForeignKey("CinemaId");
 
-                    b.Navigation("Film");
+                    b.Navigation("Cinema");
                 });
 
-            modelBuilder.Entity("FilmReservation.Data.Models.Film", b =>
+            modelBuilder.Entity("FilmReservation.Data.Models.Program", b =>
                 {
-                    b.HasOne("FilmReservation.Data.Models.Reservation", null)
-                        .WithMany("Films")
-                        .HasForeignKey("ReservationId");
+                    b.HasOne("FilmReservation.Data.Models.CinemaHall", "CinemaHall")
+                        .WithMany("Programs")
+                        .HasForeignKey("CinemaHallId");
+
+                    b.HasOne("FilmReservation.Data.Models.Film", "Film")
+                        .WithMany("Programs")
+                        .HasForeignKey("FilmId");
+
+                    b.Navigation("CinemaHall");
+
+                    b.Navigation("Film");
                 });
 
             modelBuilder.Entity("FilmReservation.Data.Models.Reservation", b =>
                 {
                     b.HasOne("FilmReservation.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Reservations")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
+                    b.HasOne("FilmReservation.Data.Models.Program", "Program")
+                        .WithMany()
+                        .HasForeignKey("ProgramId");
+
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Program");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.ReservationSeat", b =>
+                {
+                    b.HasOne("FilmReservation.Data.Models.Reservation", "Reservation")
+                        .WithMany("ReservationSeats")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FilmReservation.Data.Models.Seat", "Seat")
+                        .WithMany("ReservationSeats")
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservation");
+
+                    b.Navigation("Seat");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.Seat", b =>
+                {
+                    b.HasOne("FilmReservation.Data.Models.CinemaHall", "CinemaHall")
+                        .WithMany("Seats")
+                        .HasForeignKey("CinemaHallId");
+
+                    b.Navigation("CinemaHall");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -512,14 +637,31 @@ namespace FilmReservation.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FilmReservation.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("FilmReservation.Data.Models.Cinema", b =>
                 {
-                    b.Navigation("Reservations");
+                    b.Navigation("CinemaHalls");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.CinemaHall", b =>
+                {
+                    b.Navigation("Programs");
+
+                    b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.Film", b =>
+                {
+                    b.Navigation("Programs");
                 });
 
             modelBuilder.Entity("FilmReservation.Data.Models.Reservation", b =>
                 {
-                    b.Navigation("Films");
+                    b.Navigation("ReservationSeats");
+                });
+
+            modelBuilder.Entity("FilmReservation.Data.Models.Seat", b =>
+                {
+                    b.Navigation("ReservationSeats");
                 });
 #pragma warning restore 612, 618
         }
