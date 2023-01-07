@@ -5,6 +5,6 @@ namespace Tests
 {
     public class OperationalStoreOptionsForTests : IOptions<OperationalStoreOptions>
     {
-        public OperationalStoreOptions Value => new OperationalStoreOptions();
+        public OperationalStoreOptions Value => new();
     }
 }

@@ -21,6 +21,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using FilmReservation.BusinessLogic.Interfaces;
 
 namespace FilmReservation
 {
@@ -116,8 +117,7 @@ namespace FilmReservation
             services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
-            //services.AddTransient<IFilmService, FilmService>();
-
+            services.AddTransient<IFilmService, FilmService>();
             services.AddTransient<IAuthManagementService, AuthManagementService>();// or add scope
         }
 

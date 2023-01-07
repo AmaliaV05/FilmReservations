@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FilmReservation.BusinessLogic.Services;
 using FilmReservation.BusinessLogic.ViewModels.Authentication;
 
 using System.Threading.Tasks;
+using FilmReservation.BusinessLogic.Interfaces;
 
 namespace FilmReservation.Controllers
 {

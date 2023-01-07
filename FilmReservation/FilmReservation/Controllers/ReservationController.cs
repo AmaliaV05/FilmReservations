@@ -1,16 +1,12 @@
-﻿/*using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using FilmReservation.Data.Data;
 using FilmReservation.Data.Models;
 using FilmReservation.BusinessLogic.ViewModels.Reservations;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FilmReservation.BusinessLogic.Interfaces;
 
 namespace FilmReservation.Controllers
 {
@@ -19,75 +15,39 @@ namespace FilmReservation.Controllers
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IReservationService _reservationService;
         private readonly ILogger<ReservationController> _logger;
-        private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ReservationController(ApplicationDbContext context, ILogger<ReservationController> logger, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public ReservationController(IReservationService reservationService, ILogger<ReservationController> logger, UserManager<ApplicationUser> userManager)
         {
-            _context = context;
+            _reservationService = reservationService;
             _logger = logger;
-            _mapper = mapper;
             _userManager = userManager;
         }
 
-        /// <summary>
-        /// Make one or more reservations to films
-        /// </summary>
-        /// <param name="newReservationRequest"></param>
-        /// <returns>returns Ok if reservation is successful, else Bad Request</returns>
-        [HttpPost]
-        public async Task<ActionResult> MakeReservation(NewReservationRequest newReservationRequest)
-        {
-            var user = await _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value);
-
-            List<Film> reservedFilms = new();
-            newReservationRequest.ReservedFilmsIds.ForEach(fid =>
-            {
-                var filmWithId = _context.Films.Find(fid);
-                if(filmWithId != null)
-                {
-                    reservedFilms.Add(filmWithId);
-                }
-            });
-
-            if(reservedFilms.Count == 0)
-            {
-                return BadRequest();
-            }
-
-            var reservation = new Reservation
-            {
-                ApplicationUser = user,
-                //Films = reservedFilms,
-                ReservationDateTime = newReservationRequest.ReservationDateTime.GetValueOrDefault()
-            };
-
-            _context.Reservations.Add(reservation);
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-
-        /// <summary>
-        /// Get all reservations made
-        /// </summary>
-        /// <returns>Returns all revservations</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ReservationForUserResponse>>> GetAll()
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> GetReservations()
         {
-            var user = await _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value);
-            //var user = await _userManager.FindByNameAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-            var result = _context.Reservations
-                .Where(r => r.ApplicationUser.Id == user.Id)
-                //.Include(r => r.Films)
-                .Select(r => _mapper.Map<ReservationForUserResponse>(r)).ToList();
-            //var resultViewModel = _mapper.Map<ReservationForUserResponse>(result);
-
-            return result;
+            var claims = (User.Identity as ClaimsIdentity).Claims;
+            return Ok(await _reservationService.GetReservations(claims));
         }
-       
+
+        [HttpGet("{idReservation}")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> GetReservations(int idReservation)
+        {
+            var claims = (User.Identity as ClaimsIdentity).Claims;
+            return Ok(await _reservationService.GetReservation(claims, idReservation));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Client")]
+        public async Task<ActionResult> MakeReservation(NewReservationRequest reservationRequest)
+        {
+            var claims = (User.Identity as ClaimsIdentity).Claims;
+            return Ok(await _reservationService.AddReservation(claims, reservationRequest));
+        }
     }
 }
-*/

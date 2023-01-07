@@ -9,7 +9,8 @@
         Horror,
         Mystery,
         Romance,
+        ScienceFiction,
         Thriller,
-        Western
+        Western        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FilmReservation.Data.Models.EnumUtils;
+using System;
 
 namespace FilmReservation.BusinessLogic.ViewModels
 {
@@ -14,5 +15,6 @@ namespace FilmReservation.BusinessLogic.ViewModels
         public string Director { get; set; }
         public Language Language { get; set; }
         public AgeRestriction AgeRestriction { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

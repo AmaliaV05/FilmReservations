@@ -1,67 +1,64 @@
-﻿/*using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using FilmReservation.Data.Data;
 using FilmReservation.BusinessLogic.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmReservation.Data.Models.Pagination;
 using FilmReservation.Data.Models;
-using FilmReservation.Data.Models.EnumUtils;
+using AutoMapper;
+using FilmReservation.BusinessLogic.Exceptions;
+using FilmReservation.BusinessLogic.Interfaces;
 
 namespace FilmReservation.BusinessLogic.Services
 {
     public class FilmService : IFilmService
     {
-        public ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public FilmService(ApplicationDbContext context)
+        public FilmService(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<PagedList<Film>> GetAllFilms(FilmParams filmParams)
+        public async Task<PagedList<FilmViewModel>> GetFilms(FilmParams filmParams)
         {
-           var query = _context.Films.AsQueryable();
-
-           if (!String.IsNullOrEmpty(filmParams.Title))
-           {
-               query = query.Where(f => f.Title == filmParams.Title);
-           }
-
-           return await PagedList<Film>.CreateAsync(query.AsNoTracking(),
-               filmParams.PageNumber, filmParams.PageSize);
+            var query = _context.Films.AsQueryable();
+            query = Search(query, filmParams);
+            return await PagedList<FilmViewModel>.CreateAsync(query.AsNoTracking().Select(f => _mapper.Map<FilmViewModel>(f)),
+                filmParams.PageNumber, filmParams.PageSize);
         }
 
-        public Task<Film> GetFilmById(int id)
+        private static IQueryable<Film> Search(IQueryable<Film> query, FilmParams filmParams)
         {
-            throw new NotImplementedException();
-        }        
-
-        public IEnumerable<FilmViewModel> FilterFilms(DateTime firstDate, DateTime lastDate)
-        {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(filmParams.Search))
+            {
+                return query.Where(q => q.Title.ToLower().Contains(filmParams.Search.ToLower()));
+            }
+            return query;
         }
 
-        public IEnumerable<FilmViewModel> FilterFilmsByGenre(Genre genre)
+        public async Task<FilmViewModel> GetFilm(int idFilm)
         {
-            throw new NotImplementedException();
+            var film = await _context.Films
+                .Where(b => b.Id == idFilm)                
+                .FirstOrDefaultAsync();
+            if (film == null)
+            {
+                throw new IdNotFoundException(nameof(Film), idFilm);
+            }
+            return _mapper.Map<FilmViewModel>(film);
         }
 
-        public Task<bool> PutFilm(int id, FilmViewModel filmViewModel)
-        {
-            throw new NotImplementedException();
-        }        
-
-        public Task<Film> PostFilm(FilmViewModel filmRequest)
-        {
-            throw new NotImplementedException();
+        public async Task<FilmViewModel> AddFilm(FilmViewModel filmViewModel)
+        {            
+            var film = _mapper.Map<Film>(filmViewModel);
+            _context.Films.Add(film);
+            await SaveChangesAsync();
+            return _mapper.Map<FilmViewModel>(film);
         }
 
-        public Task<bool> DeleteFilm(int id)
-        {
-            throw new NotImplementedException();
-        }
+        private async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
     }
 }
-*/

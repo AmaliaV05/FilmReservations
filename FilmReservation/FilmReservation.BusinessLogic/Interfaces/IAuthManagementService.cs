@@ -2,8 +2,9 @@
 using FilmReservation.BusinessLogic.ViewModels.Authentication;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FilmReservation.BusinessLogic.Services;
 
-namespace FilmReservation.BusinessLogic.Services
+namespace FilmReservation.BusinessLogic.Interfaces
 {
     public interface IAuthManagementService
     {
