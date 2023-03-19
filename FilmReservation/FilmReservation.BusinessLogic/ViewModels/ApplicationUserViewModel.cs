@@ -6,7 +6,6 @@ namespace FilmReservation.BusinessLogic.ViewModels
     {
         public string Id { get; set; }
         public string Email { get; set; }
-
-        public IList<string> UserRoles { get; set; } = new List<string>();
+        public string UserRole { get; set; }
     }
 }
