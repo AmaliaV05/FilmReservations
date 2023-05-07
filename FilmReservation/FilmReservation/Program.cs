@@ -1,4 +1,3 @@
-using FilmReservation.Data.Configuration;
 using FilmReservation.Data.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

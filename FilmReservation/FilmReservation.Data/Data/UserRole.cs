@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FilmReservation.Data.Configuration
+namespace FilmReservation.Data.Data
 {
     internal class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
     {

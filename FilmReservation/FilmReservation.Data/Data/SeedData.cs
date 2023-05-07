@@ -1,10 +1,9 @@
-﻿using FilmReservation.Data.Data;
-using FilmReservation.Data.Models;
+﻿using FilmReservation.Data.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 
-namespace FilmReservation.Data.Configuration
+namespace FilmReservation.Data.Data
 {
     public class SeedData
     {
@@ -15,7 +14,7 @@ namespace FilmReservation.Data.Configuration
             var cinemas = AddCinemas(context);
             var cinemaHalls = AddCinemaHalls(context, cinemas);
             AddSeats(context, cinemaHalls);
-            context.SaveChanges();            
+            context.SaveChanges();
         }
 
         private static List<Cinema> AddCinemas(ApplicationDbContext context)

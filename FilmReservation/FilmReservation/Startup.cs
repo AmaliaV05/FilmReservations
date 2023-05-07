@@ -81,7 +81,6 @@ namespace FilmReservation
             services.AddRazorPages();
             
 
-            // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -106,22 +105,20 @@ namespace FilmReservation
                         Url = new Uri("https://example.com/license"),
                     }
                 });
-                //c.UseInlineDefinitionsForEnums();
-                // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             }); 
 
-            services.AddTransient<IValidator<FilmViewModel>, FilmValidator>();// or add scope
+            services.AddTransient<IValidator<FilmViewModel>, FilmValidator>();
             services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
             services.AddTransient<IFilmService, FilmService>();
-            services.AddTransient<IAuthManagementService, AuthManagementService>();// or add scope
+            services.AddTransient<IAuthManagementService, AuthManagementService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
@@ -135,15 +132,14 @@ namespace FilmReservation
                 app.UseMigrationsEndPoint();
 
                 app.UseCors(builder =>
-                    builder.AllowAnyOrigin()//nu este indicat in cazul aplicatiilor reale
+                    builder.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     );
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Error");                
                 app.UseHsts();
             }
             if (env.IsDevelopment())
@@ -154,7 +150,6 @@ namespace FilmReservation
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -180,9 +175,6 @@ namespace FilmReservation
 
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
